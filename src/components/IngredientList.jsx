@@ -1,13 +1,12 @@
 
+import Ingredient from './Ingredient';
+
 const IngredientList = ({ ingredients, addToBurger }) => {
   return (
     <ul>
-      {ingredients.map((ingredient) => (
-        <li 
-        key={ingredient.name} 
-        style={{ backgroundColor: ingredient.color }}>
-          {ingredient.name}
-          <button onClick={() => addToBurger(ingredient)}>+</button>
+      {ingredients.map((ingredient, index) => (
+        <li key={index} style={{ backgroundColor: ingredient.color }}>
+          <Ingredient ingredient={ingredient} addToBurger={addToBurger} />
         </li>
       ))}
     </ul>

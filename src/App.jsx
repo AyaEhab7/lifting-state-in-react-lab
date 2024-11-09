@@ -1,5 +1,6 @@
+
+import React, { useState } from 'react';
 import './App.css';
-import { useState } from 'react';
 import IngredientList from './components/IngredientList';
 import BurgerStack from './components/BurgerStack';
 
@@ -21,18 +22,16 @@ export const availableIngredients = [
 ];
 
 const App = () => {
-  const [stack, setStack] = useState([]); 
-  
-  // Function to add an ingredient to the stack
+  const [stack, setStack] = useState([]);
+
+  // Function to add ingredient to the burger stack
   const addToBurger = (ingredient) => {
     setStack((prevStack) => [...prevStack, ingredient]);
   };
 
-  // Function to remove an ingredient from the stack
-  const removeFromBurger = (ingredientName) => {
-    setStack((prevStack) => 
-    prevStack.filter((ingredient) => 
-    ingredient.name !== ingredientName));
+  // Function to remove ingredient from the burger stack
+  const removeFromBurger = (ingredientToRemove) => {
+    setStack((prevStack) => prevStack.filter(ingredient => ingredient !== ingredientToRemove));
   };
 
   return (
@@ -43,10 +42,10 @@ const App = () => {
         ingredients={availableIngredients} 
         addToBurger={addToBurger} 
         />
+        
         <BurgerStack 
         stack={stack} 
-        removeFromBurger={removeFromBurger} 
-        />
+        removeFromBurger={removeFromBurger} />
       </section>
     </main>
   );
